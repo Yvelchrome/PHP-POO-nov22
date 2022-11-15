@@ -4,14 +4,25 @@ CREATE TABLE IF NOT EXISTS User (
     email VARCHAR(255) NOT NULL,
     password VARCHAR(256) NOT NULL,
     admin INT(1) NOT NULL,
-    PRIMARY KEY (`user_id`)
+    PRIMARY KEY (userId)
 );
 
 CREATE TABLE IF NOT EXISTS Post(
     postId INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
-    content TEXT,
+    content TEXT NOT NULL,
     creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (publiId),
-    FOREIGN KEY (userId) REFERENCES User(userId)
+    PRIMARY KEY (postId),
+    FOREIGN KEY (userId) REFERENCES User(userId) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Comment(
+    commentId INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    postId INT NOT NULL,
+    content TEXT NOT NULL,
+    creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (commentId),
+    FOREIGN KEY (userId) REFERENCES User(userId) ON DELETE CASCADE,
+    FOREIGN KEY (postId) REFERENCES Post(postId) ON DELETE CASCADE
 );
