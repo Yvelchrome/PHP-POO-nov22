@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+require_once "vendor/autoload.php";
 
-<body>
-    <p>coucou</p>
-</body>
+$url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 
-</html>
+switch ($url) {
+    case "/":
+        require_once __DIR__ . "/Views/SignIn.php";
+        break;
+}
