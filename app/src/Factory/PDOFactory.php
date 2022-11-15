@@ -12,7 +12,7 @@ class PDOFactory implements Database
     private int $port;
     private string $dbName;
     private string $user;
-    private string $assword;
+    private string $password;
 
     public function __construct(string $driver = "mysql", string $host = "database", int $port = 3306, string $dbName = "data", string $user = "root", string $password = "password")
     {
