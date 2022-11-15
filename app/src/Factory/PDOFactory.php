@@ -23,7 +23,7 @@ class PDOFactory implements Database
         $this->user = $user;
         $this->password = $password;
     }
-
+    // test
     public function getMySqlPDO(): \PDO
     {
         return new \PDO($this->driver . ":host" . $this->host . ":" . $this->port . ";dbname=" . $this->dbName, $this->user, $this->password);
