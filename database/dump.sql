@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS User (
+    userId INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(256) NOT NULL,
+    admin INT(1) NOT NULL,
+    PRIMARY KEY (`user_id`)
+);
+
+CREATE TABLE IF NOT EXISTS Post(
+    postId INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    content TEXT,
+    creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (publiId),
+    FOREIGN KEY (userId) REFERENCES User(userId)
+);
