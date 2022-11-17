@@ -4,7 +4,7 @@
         <h2 class="title__h2">Steven Godin | Loïc Jin | Baptiste Verdier</h2>
     </div>
     <section class="container container--sign-up">
-        <form class="container__form" action="./php/connection/sign_up.php" method="post">
+        <form class="container__form" method="post">
             <label class="container__form__label">
                 Username
                 <input class="container__form__input" name="username" type="text" pattern="^[aA-z0-9_-]{3,15}$" required>
@@ -19,7 +19,7 @@
             </label>
             <label class="container__form__label">Admin
                 <span class=" container__form--checkbox">
-                    <input name="admin" type="checkbox">
+                    <input name="admin" type="checkbox" value="1">
                     <span class="slider round"></span>
                 </span>
             </label>
