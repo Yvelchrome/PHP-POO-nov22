@@ -11,7 +11,6 @@
 <body>
     <?= $_pageContent; ?>
 
-   
 </body>
 
 </html>

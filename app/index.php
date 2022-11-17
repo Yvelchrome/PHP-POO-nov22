@@ -37,7 +37,7 @@ foreach ($controllers as $controller) {
     foreach ($reflection->getMethods() as $method) {
         foreach ($method->getAttributes() as $attribute) {
 
-            var_dump($attribute->getName());
+            var_dump("Attribute", $attribute->getName());
 
             /** @var Route $route */
             $route = $attribute->newInstance();

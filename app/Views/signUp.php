@@ -1,9 +1,10 @@
-<form action="">
+<form action="/login" mehtod="POST">
     <div class="container">
         <h1>Inscription</h1>
         <p>Remplissez les champs pour créer votre compte</p>
         <hr>
-
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter username" name="username" id="username" required>
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
@@ -20,3 +21,10 @@
         <p>Déjà membre ? <a href="signIn">Se connecter</a>.</p>
     </div>
 </form>
+
+<?php
+/** @var App\Entity\User[] $users */
+var_dump($users);
+foreach ($users as $user) {
+    echo $user->getUsername();
+}

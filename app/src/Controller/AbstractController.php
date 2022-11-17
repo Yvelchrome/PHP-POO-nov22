@@ -23,12 +23,14 @@ abstract class AbstractController
         foreach ($args as $key => $value) {
             ${$key} = $value;
         }
+
+        unset($args);
         require_once $viewLoaded;
 
         $_pageContent = ob_get_clean();
         $_pageTitle = $title;
-
         require_once $base;
+
 
         exit;
     }

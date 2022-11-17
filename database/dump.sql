@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS User (
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(256) NOT NULL,
-    admin INT(1) NOT NULL,
+    admin INT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (userId)
 );
 
@@ -23,7 +23,10 @@ CREATE TABLE IF NOT EXISTS Comment(
     postId INT NOT NULL,
     content TEXT NOT NULL,
     creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
     PRIMARY KEY (commentId),
     FOREIGN KEY (userId) REFERENCES User(userId) ON DELETE CASCADE,
     FOREIGN KEY (postId) REFERENCES Post(postId) ON DELETE CASCADE
 );
+
+INSERT INTO User (username, email, password, admin) VALUES ("toto","toto@gmail.com","psw",1);
