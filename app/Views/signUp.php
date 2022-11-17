@@ -1,4 +1,4 @@
-<form action="/login" mehtod="POST">
+<form action="/login" method="POST">
     <div class="container">
         <h1>Inscription</h1>
         <p>Remplissez les champs pour créer votre compte</p>
@@ -22,9 +22,3 @@
     </div>
 </form>
 
-<?php
-/** @var App\Entity\User[] $users */
-var_dump($users);
-foreach ($users as $user) {
-    echo $user->getUsername();
-}

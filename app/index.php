@@ -6,17 +6,7 @@ require_once "vendor/autoload.php";
 
 $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
 var_dump($url);
-// switch ($url) {
-//     case "/":
-//         $controller = new \App\Controller\SignUpController();
-//         $controller->signUp();
-//         break;
-//     case "/signIn":
-//         $controller = new \App\Controller\SignInController();
-//         $controller->signIn();
-//         break;
-//     default:
-// }
+
 
 $controllerDir = dirname(__FILE__) . "/src/Controller";
 $dirs = scandir($controllerDir);
@@ -37,7 +27,7 @@ foreach ($controllers as $controller) {
     foreach ($reflection->getMethods() as $method) {
         foreach ($method->getAttributes() as $attribute) {
 
-            var_dump("Attribute", $attribute->getName());
+            // var_dump("Attribute", $attribute->getName());
 
             /** @var Route $route */
             $route = $attribute->newInstance();

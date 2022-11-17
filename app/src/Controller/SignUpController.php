@@ -20,15 +20,12 @@ class SignUpController extends AbstractController
     #[Route("/login", name: "login", methods: ["POST"])]
     public function executeAdd()
     {
-        var_dump("toto");
-        $formmUsername = $_POST["username"];
-        $formPws = $_POST["pws"];
+        $formUsername = $_POST["username"];
         $formEmail = $_POST["email"];
+        $formPws = hash("sha512", $_POST["psw"]);
         $manager = new UserManager(new PDOFactory());
-        var_dump($formEmail, $formmUsername, $formPws);
-        $createUser = $manager->addUser($formmUsername, $formEmail, $formPws);
+        $createUser = $manager->addUser($formUsername, $formEmail, $formPws);
 
-        die;
-        $this->render("signIn.php", [], "création réussite");
+        $this->render("signIn.php", [], "login réussi");
     }
 }
