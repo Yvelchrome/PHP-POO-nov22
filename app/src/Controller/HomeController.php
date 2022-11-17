@@ -4,18 +4,17 @@ namespace App\Controller;
 
 use App\Factory\PDOFactory;
 use App\Manager\PostManager;
-use App\Manager\UserManager;
 use App\Route\Route;
 
-class PostController extends AbstractController
+class HomeController extends AbstractController
 {
-    #[Route('/', name: "homepage", methods: ["GET"])]
+    #[Route('/home', name: "homepage", methods: ["GET"])]
     public function home()
     {
         $manger = new PostManager(new PDOFactory());
         $posts = $manger->getAllPosts();
 
-        $this->render("SignIn.php", [
+        $this->render("home.php", [
             "posts" => $posts,
             "trucs" => "je suis une string",
             "machin" => 42
