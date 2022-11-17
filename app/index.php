@@ -5,7 +5,7 @@ use App\Route\Route;
 require_once "vendor/autoload.php";
 
 $url = "/" . trim(explode("?", $_SERVER['REQUEST_URI'])[0], "/");
-// var_dump($url);
+
 $controllerDir = dirname(__FILE__) . "/src/Controller";
 $dirs = scandir($controllerDir);
 // var_dump($dirs);
@@ -24,8 +24,6 @@ foreach ($controllers as $controller) {
     $reflection = new ReflectionClass($controller);
     foreach ($reflection->getMethods() as $method) {
         foreach ($method->getAttributes() as $attribute) {
-
-            // var_dump("Attribute", $attribute->getName());
 
             /** @var Route $route */
             $route = $attribute->newInstance();
