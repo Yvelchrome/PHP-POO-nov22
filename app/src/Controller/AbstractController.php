@@ -4,7 +4,6 @@ namespace App\Controller;
 
 abstract class AbstractController
 {
-
     public function __construct(string $action, array $params = [])
     {
         if (!is_callable([$this, $action])) {
@@ -13,12 +12,11 @@ abstract class AbstractController
         call_user_func_array([$this, $action], $params);
     }
 
-
     public function render(string $view, array $args = [], string $title = "Doc")
     {
         $viewLoaded = dirname(__DIR__, 2) . "/Views/" . $view;
         $base = dirname(__DIR__, 2) . "/Views/base.php";
-        var_dump($viewLoaded);
+        //var_dump($viewLoaded);
         ob_start();
         foreach ($args as $key => $value) {
             ${$key} = $value;
@@ -30,7 +28,6 @@ abstract class AbstractController
         $_pageContent = ob_get_clean();
         $_pageTitle = $title;
         require_once $base;
-
 
         exit;
     }
