@@ -19,6 +19,7 @@
             </label>
             <label class="container__form__label">Admin
                 <span class=" container__form--checkbox">
+                    <input name="admin" type='hidden' value='0'>
                     <input name="admin" type="checkbox" value="1">
                     <span class="slider round"></span>
                 </span>
