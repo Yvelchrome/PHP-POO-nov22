@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Route\Route;
+use App\Manager\UserManager;
+use App\Factory\PDOFactory;
 
 class LoginController extends AbstractController
 {
@@ -10,5 +12,10 @@ class LoginController extends AbstractController
     public function login()
     {
         $this->render("login.php", [], "Connexion");
+    }
+
+    #[Route("/login", name: "login", methods: ["POST"])]
+    public function executeLogin()
+    {
     }
 }
