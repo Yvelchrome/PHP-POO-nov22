@@ -1,36 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-</head>
-
-<body>
-    <form action="action_page.php">
-    <div class="container">
-        <h1>Inscription</h1>
-        <p>Remplissez les champs pour créer votre compte</p>
-        <hr>
-
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
-        <label for="psw"><b>Mot de Passe</Param></b></label>
-        <input type="password" placeholder="Enter votre mot de passe" name="psw" id="psw" required>
-
-        <label for="psw-repeat"><b>Répétez votre Mot de Passe</b></label>
-        <input type="password" placeholder="Entrez votre mot de passe à nouveau" name="psw-repeat" id="psw-repeat" required>
-        <hr>
-        <button type="submit" class="registerbtn">Inscription</button>
+<div class="index">
+    <div class="title">
+        <h1 class="title__h1">PHP POO NOV22</h1>
+        <h2 class="title__h2">Steven Godin | Loïc Jin | Baptiste Verdier</h2>
     </div>
+    <section class="container container--sign-in">
+        <form class="container__form" action="./php/connection/sign_in.php" method="post">
+            <label class="container__form__label">
+                Username
+                <input class="container__form__input" name="username" type="text" pattern="^[aA-z0-9_-]{3,15}$" required>
+            </label>
+            <label class="container__form__label">
+                Password
+                <input class="container__form__input" name="password" type="password" pattern="^[aA-z0-9_-]{3,15}$" required>
+            </label>
+            <input class="container__form__submit" name="connection" type="submit" value="SIGN IN">
+        </form>
+        <p>First visit ? <span class="underline">Register</span></p>
+    </section>
 
-    <div class="container signin">
-        <p>Déjà membre ? <a href="#">Se connecter</a>.</p>
-    </div>
-    </form>
-</body>
-
-</html>
+</div>
