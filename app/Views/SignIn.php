@@ -17,5 +17,4 @@
         </form>
         <p>First visit ? <span class="underline">Register</span></p>
     </section>
-
 </div>

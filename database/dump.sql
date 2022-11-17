@@ -3,13 +3,14 @@ CREATE TABLE IF NOT EXISTS User (
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(256) NOT NULL,
-    admin INT(1) NOT NULL,
+    admin INT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (userId)
 );
 
 CREATE TABLE IF NOT EXISTS Post(
     postId INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
     creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (postId),

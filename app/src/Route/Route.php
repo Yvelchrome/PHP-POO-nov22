@@ -5,6 +5,7 @@ namespace App\Route;
 use Attribute;
 
 #[Attribute]
+
 class Route
 {
     private ?string $name = null;
@@ -12,7 +13,7 @@ class Route
     private ?string $controller = null;
     private ?string $action = null;
     private array $params = [];
-    private array $methods = ["GET", "POST", "PUT", 'PATCH', 'DELETE', "OPTIONS"];
+    private array $methods = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"];
 
     public function __construct(string $path, ?string $name = null, ?array $methods = null)
     {
@@ -23,6 +24,8 @@ class Route
         }
     }
 
+
+
     /**
      * @return string|null
      */
@@ -32,53 +35,12 @@ class Route
     }
 
     /**
-     * @param string|null $name
-     * @return Route
+     * @param string|null $name 
+     * @return self
      */
-    public function setName(?string $name): Route
+    public function setName(?string $name): self
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    /**
-     * @param string|null $path
-     * @return Route
-     */
-    public function setPath(?string $path): Route
-    {
-        preg_match_all("/{(\w+)}/", $path, $match);
-        $this->params = $match[1];
-
-        $this->path = preg_replace("/{(\w+)}/", '([^/]+)', str_replace("/", "\/", $path));
-
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getController(): ?string
-    {
-        return $this->controller;
-    }
-
-    /**
-     * @param string|null $controller
-     * @return Route
-     */
-    public function setController(?string $controller): Route
-    {
-        $this->controller = $controller;
         return $this;
     }
 
@@ -91,10 +53,10 @@ class Route
     }
 
     /**
-     * @param string|null $action
-     * @return Route
+     * @param string|null $action 
+     * @return self
      */
-    public function setAction(?string $action): Route
+    public function setAction(?string $action): self
     {
         $this->action = $action;
         return $this;
@@ -109,10 +71,10 @@ class Route
     }
 
     /**
-     * @param array $params
-     * @return Route
+     * @param array $params 
+     * @return self
      */
-    public function setParams(array $params): Route
+    public function setParams(array $params): self
     {
         $this->params = $params;
         return $this;
@@ -127,12 +89,53 @@ class Route
     }
 
     /**
-     * @param array $methods
-     * @return Route
+     * @param array $methods 
+     * @return self
      */
-    public function setMethods(array $methods): Route
+    public function setMethods(array $methods): self
     {
         $this->methods = $methods;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPath(): string
+    {
+        return $this->path;
+    }
+
+    /**
+     * @param string|null $path 
+     * @return self
+     */
+    public function setPath(string $path): self
+    {
+        var_dump($path);
+        preg_match_all("/{(\w+)}/", $path, $match);
+        $this->params = $match[1];
+        $this->path = preg_replace("/{(\w+)}/", "([^/]+)", str_replace("/", "\/", $path));
+        return $this;
+    }
+
+
+
+    /**
+     * @return string|null
+     */
+    public function getController(): ?string
+    {
+        return $this->controller;
+    }
+
+    /**
+     * @param string|null $controller 
+     * @return self
+     */
+    public function setController(?string $controller): self
+    {
+        $this->controller = $controller;
         return $this;
     }
 
@@ -140,7 +143,10 @@ class Route
     {
         preg_match("#{$this->path}#", $url, $match);
         array_shift($match);
-        return array_combine($this->getParams(), $match);
+        return array_combine(
+            $this->getParams(),
+            $match
+        );
     }
 
     public function match(string $url): bool

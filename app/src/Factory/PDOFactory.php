@@ -7,25 +7,31 @@ use PDO;
 
 class PDOFactory implements Database
 {
-    private string $driver;
     private string $host;
-    private int $port;
     private string $dbName;
-    private string $user;
+    private string $userName;
     private string $password;
 
-    public function __construct(string $driver = "mysql", string $host = "database", int $port = 3306, string $dbName = "data", string $user = "root", string $password = "password")
+    public function __construct(string $host = "db", string $dbName = "data", string $userName = "root", string $password = "password")
     {
-        $this->driver = $driver;
         $this->host = $host;
-        $this->port = $port;
         $this->dbName = $dbName;
-        $this->user = $user;
+        $this->userName = $userName;
         $this->password = $password;
     }
-    // test
-    public function getMySqlPDO(): \PDO
+
+    public function getMySqlPDO(): PDO
     {
-        return new \PDO($this->driver . ":host" . $this->host . ":" . $this->port . ";dbname=" . $this->dbName, $this->user, $this->password);
+        return new PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
+    }
+
+    public function getPostgresPDO(): PDO
+    {
+        return new PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
+    }
+
+    public function getMongoPDO(): PDO
+    {
+        return new PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
     }
 }
