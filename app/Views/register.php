@@ -7,15 +7,15 @@
         <form class="container__form" method="post">
             <label class="container__form__label">
                 Username
-                <input class="container__form__input" name="username" type="text" pattern="^[aA-z0-9_-]{3,15}$" required>
+                <input class="container__form__input" name="username" type="text" required>
             </label>
             <label class="container__form__label">
                 Email
-                <input class="container__form__input" name="email" type="text" pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+" required>
+                <input class="container__form__input" name="email" type="text" required>
             </label>
             <label class="container__form__label">
                 Password
-                <input class="container__form__input" name="password" type="password" pattern="^[aA-z0-9_-]{3,15}$" required>
+                <input class="container__form__input" name="password" type="password" required>
             </label>
             <label class="container__form__label">Admin
                 <span class=" container__form--checkbox">

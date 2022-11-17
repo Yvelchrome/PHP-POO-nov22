@@ -7,11 +7,11 @@
         <form class="container__form" method="post">
             <label class="container__form__label">
                 Username / Email
-                <input class="container__form__input" name="username" type="text" pattern="^[aA-z0-9_-]{3,15}$" required>
+                <input class="container__form__input" name="username" type="text" required>
             </label>
             <label class="container__form__label">
                 Password
-                <input class="container__form__input" name="password" type="password" pattern="^[aA-z0-9_-]{3,15}$" required>
+                <input class="container__form__input" name="password" type="password" required>
             </label>
             <input class="container__form__submit" name="connection" type="submit" value="SIGN IN">
         </form>
