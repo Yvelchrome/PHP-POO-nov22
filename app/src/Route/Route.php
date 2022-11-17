@@ -110,7 +110,6 @@ class Route
      */
     public function setPath(string $path): self
     {
-        // var_dump($path);
         preg_match_all("/{(\w+)}/", $path, $match);
         $this->params = $match[1];
         $this->path = preg_replace("/{(\w+)}/", "([^/]+)", str_replace("/", "\/", $path));
