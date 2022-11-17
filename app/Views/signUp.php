@@ -1,4 +1,4 @@
-<form action="action_page.php">
+<form action="">
     <div class="container">
         <h1>Inscription</h1>
         <p>Remplissez les champs pour créer votre compte</p>
@@ -17,6 +17,6 @@
     </div>
 
     <div class="container signin">
-        <p>Déjà membre ? <a href="signin">Se connecter</a>.</p>
+        <p>Déjà membre ? <a href="signIn">Se connecter</a>.</p>
     </div>
 </form>
