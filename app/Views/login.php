@@ -6,7 +6,7 @@
     <section class="container container--sign-in">
         <form class="container__form" action="./php/connection/sign_in.php" method="post">
             <label class="container__form__label">
-                Username
+                Username / Email
                 <input class="container__form__input" name="username" type="text" pattern="^[aA-z0-9_-]{3,15}$" required>
             </label>
             <label class="container__form__label">
@@ -15,6 +15,6 @@
             </label>
             <input class="container__form__submit" name="connection" type="submit" value="SIGN IN">
         </form>
-        <p>First visit ? <span class="underline">Register</span></p>
+        <p>First visit ? <a href="/" class="underline">Register</a></p>
     </section>
 </div>
