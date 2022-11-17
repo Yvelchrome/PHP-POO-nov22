@@ -17,5 +17,6 @@ class LoginController extends AbstractController
     #[Route("/login", name: "login", methods: ["POST"])]
     public function executeLogin()
     {
+        header("Location: /home");
     }
 }

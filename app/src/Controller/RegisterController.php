@@ -24,6 +24,6 @@ class RegisterController extends AbstractController
         $manager = new UserManager(new PDOFactory());
         $manager->addUser($username, $email, $password, $admin);
 
-        $this->render("login.php", [], "Connexion");
+        header("Location: /login");
     }
 }
