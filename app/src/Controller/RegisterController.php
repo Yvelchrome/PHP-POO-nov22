@@ -13,7 +13,6 @@ class RegisterController extends AbstractController
     {
         $this->render("register.php", [], "Inscription");
     }
-
     #[Route("/", name: "register", methods: ["POST"])]
     public function executeAdd()
     {
@@ -24,6 +23,7 @@ class RegisterController extends AbstractController
         $manager = new UserManager(new PDOFactory());
         $manager->addUser($username, $email, $password, $admin);
 
-        header("Location: /login");
+        header("Location: /home");
     }
+
 }

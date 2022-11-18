@@ -21,4 +21,8 @@ class PostManager extends BaseManager
 
         return $posts;
     }
+
+    public function addPost() {
+        $insert = $this->pdo->prepare("INSERT INTO Post (userId,title,content) VALUES (:userID,:title,:content");
+    }
 }
