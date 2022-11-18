@@ -25,5 +25,4 @@ class RegisterController extends AbstractController
 
         header("Location: /home");
     }
-
 }

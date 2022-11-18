@@ -1,6 +1,3 @@
-<?php
-var_dump($_SESSION);
-?>
 <h1>Bienvenue <?= $_SESSION["User"]["username"] ?></h1>
 <a href="/login">Home</a>
 <form action="" method="POST">

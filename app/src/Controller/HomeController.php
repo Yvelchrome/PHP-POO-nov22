@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\Factory\PDOFactory;
-use App\Manager\PostManager;
 use App\Route\Route;
-use App\Manager\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -13,19 +10,7 @@ class HomeController extends AbstractController
     public function home()
     {
         session_start();
-        $this->render("home.php", [], "connecté");
-    }
-    
 
-    /**
-     * @param $id
-     * @param $truc
-     * @param $machin
-     * @return void
-     */
-    #[Route('/post/{id}/{truc}/{machin}', name: "francis", methods: ["GET"])]
-    public function showOne($id, $truc, $machin)
-    {
-        var_dump($id, $truc);
+        $this->render("home.php", [], "Home");
     }
 }
