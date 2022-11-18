@@ -1,0 +1,8 @@
+{
+  "name": "php-poo-nov22",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "sass-watch": " sass --watch .app/src/assets/css/scss/style.scss .app/src/assets/css/dist/style.css"
+  }
+}
