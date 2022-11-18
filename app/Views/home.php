@@ -1,5 +1,6 @@
 <h1>Bienvenue <?= $_SESSION["User"]["username"] ?></h1>
 <a href="/login">Home</a>
+<a href="/admin">Admin</a>
 <form action="" method="POST">
 
     <label for="content">Créez un nouveau post</label>

@@ -56,4 +56,16 @@ class UserManager extends BaseManager
         }
         return null;
     }
+
+    public function updateUser(string $username, string $email, string $password, int $admin)
+    {;
+        session_start();
+        $insert = $this->pdo->prepare("UPDATE User SET username=:username, email=:email, password=:password, admin=:admin WHERE userId = :userId");
+        $insert->bindValue("username", $username, \PDO::PARAM_STR);
+        $insert->bindValue("email", $email, \PDO::PARAM_STR);
+        $insert->bindValue("password", $password, \PDO::PARAM_STR);
+        $insert->bindValue("admin", $admin, \PDO::PARAM_INT);
+        $insert->bindValue("userId", $_SESSION["User"]["userId"], \PDO::PARAM_INT);
+        $insert->execute();
+    }
 }
