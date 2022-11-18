@@ -4,7 +4,7 @@
         <h2 class="title__h2">Steven Godin | Loïc Jin | Baptiste Verdier</h2>
     </div>
     <section class="container container--sign-up">
-        <form class="container__form" method="post" name="register">
+        <form class="container__form" method="post">
             <label class="container__form__label">
                 Username
                 <input class="container__form__input" name="username" type="text" required>
