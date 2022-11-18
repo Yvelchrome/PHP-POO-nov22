@@ -57,6 +57,13 @@ class UserManager extends BaseManager
         return null;
     }
 
+    public function deleteUser(int $userId)
+    {
+        $delete = $this->pdo->prepare("DELETE FROM User WHERE userId = :userId");
+        $delete->bindValue("userId", $userId, \PDO::PARAM_INT);
+        $delete->execute();
+    }
+
     public function updateUser(string $username, string $email, string $password, int $admin)
     {;
         session_start();

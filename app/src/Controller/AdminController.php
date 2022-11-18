@@ -28,4 +28,27 @@ class AdminController extends AbstractController
 
         header("Location: /admin");
     }
+
+    #[Route('/admin/userList', name: "userList", methods: ["GET"])]
+    public function showUserlist()
+    {
+        session_start();
+        if ($_SESSION["User"]["admin"] == 1) {
+            $userManager = new UserManager(new pdoFactory());
+            $users = $userManager->getAllUsers();
+            $this->render("adminUserList.php", ["users" => $users], "Admin");
+        } else {
+            header("Location: /admin");
+        }
+    }
+
+    #[Route('/admin/userList', name: "userList", methods: ["POST"])]
+    public function deleteUser()
+    {
+        $userId = $_POST["userId"];
+
+        $userManager = new UserManager(new pdoFactory());
+        $userManager->deleteUser($userId);
+        header("Location: /admin/userList");
+    }
 }
