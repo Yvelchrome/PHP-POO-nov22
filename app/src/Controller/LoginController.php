@@ -11,6 +11,10 @@ class LoginController extends AbstractController
     #[Route("/login", name: "login", methods: ["GET"])]
     public function login()
     {
+        session_start();
+        if (isset($_SESSION)) {
+            session_destroy();
+        }
         $this->render("login.php", [], "Connexion");
     }
 
@@ -27,5 +31,5 @@ class LoginController extends AbstractController
             exit;
         }
         header("Location: /home");
-}
+    }
 }
