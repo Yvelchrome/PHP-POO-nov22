@@ -1,0 +1,142 @@
+@use "partials" as *;
+
+.index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  height: 100vh;
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: $primary-light;
+    &__h1 {
+      font-size: 3rem;
+    }
+    &__h2 {
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-radius: 5%;
+    background-color: $primary-light;
+    padding: 4rem;
+    width: 460px;
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      input[type="text"],
+      input[type="password"] {
+        &:enabled {
+          border-bottom: 2px solid $primary-blue;
+          background-color: $primary-light;
+          padding-bottom: 0.3em;
+        }
+        &:hover {
+          border-bottom: 2px solid $secondary-blue;
+        }
+        &:valid {
+          border-bottom: 2px solid green;
+        }
+      }
+      input[type="submit"] {
+        border-radius: 10px;
+        background-color: $primary-blue;
+        padding: 0.8rem;
+        color: $primary-light;
+        &:hover {
+          background-color: $secondary-blue;
+        }
+      }
+      &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      &--checkbox {
+        display: inline-block;
+        position: relative;
+        width: 60px;
+        height: 34px;
+        input {
+          &:checked + .slider {
+            background-color: $primary-blue;
+            &:before {
+              transform: translateX(26px);
+            }
+          }
+        }
+        .slider {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          transition: 0.4s;
+          cursor: pointer;
+          background-color: #ccc;
+          &:before {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            transition: 0.4s;
+            background-color: #fff;
+            width: 26px;
+            height: 26px;
+            content: "";
+          }
+          &.round {
+            border-radius: 34px;
+            &:before {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+
+    .underline {
+      cursor: pointer;
+      border-bottom: 2px solid $primary-blue;
+      color: $primary-blue;
+      &:hover {
+        border-bottom: 2px solid $secondary-blue;
+        color: $secondary-blue;
+      }
+    }
+  }
+}
+
+.admin {
+  input {
+    appearance: auto;
+  }
+}
+
+.user-table {
+  border-spacing: 0;
+  max-width: 90%;
+  input {
+    appearance: auto;
+  }
+  tr {
+    display: flex;
+    gap: 20px;
+    &:nth-child(odd) {
+      background-color: $primary-grey;
+    }
+    &:nth-child(even) {
+      background-color: $primary-light;
+    }
+    td {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      padding: 10px 0px;
+    }
+  }
+}

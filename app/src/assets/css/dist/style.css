@@ -89,27 +89,27 @@ a {
   flex-direction: column;
   gap: 2rem;
 }
-.index .container__form input[type="text"]:enabled,
-.index .container__form input[type="password"]:enabled {
+.index .container__form input[type=text]:enabled,
+.index .container__form input[type=password]:enabled {
   border-bottom: 2px solid hsl(197deg, 68%, 34%);
   background-color: hsl(0deg, 0%, 95%);
   padding-bottom: 0.3em;
 }
-.index .container__form input[type="text"]:hover,
-.index .container__form input[type="password"]:hover {
+.index .container__form input[type=text]:hover,
+.index .container__form input[type=password]:hover {
   border-bottom: 2px solid hsl(217deg, 61%, 27%);
 }
-.index .container__form input[type="text"]:valid,
-.index .container__form input[type="password"]:valid {
+.index .container__form input[type=text]:valid,
+.index .container__form input[type=password]:valid {
   border-bottom: 2px solid green;
 }
-.index .container__form input[type="submit"] {
+.index .container__form input[type=submit] {
   border-radius: 10px;
   background-color: hsl(197deg, 68%, 34%);
   padding: 0.8rem;
   color: hsl(0deg, 0%, 95%);
 }
-.index .container__form input[type="submit"]:hover {
+.index .container__form input[type=submit]:hover {
   background-color: hsl(217deg, 61%, 27%);
 }
 .index .container__form__label {
@@ -163,6 +163,34 @@ a {
 .index .container .underline:hover {
   border-bottom: 2px solid hsl(217deg, 61%, 27%);
   color: hsl(217deg, 61%, 27%);
+}
+
+.admin input {
+  appearance: auto;
+}
+
+.user-table {
+  border-spacing: 0;
+  max-width: 90%;
+}
+.user-table input {
+  appearance: auto;
+}
+.user-table tr {
+  display: flex;
+  gap: 20px;
+}
+.user-table tr:nth-child(odd) {
+  background-color: hsl(0deg, 0%, 50%);
+}
+.user-table tr:nth-child(even) {
+  background-color: hsl(0deg, 0%, 95%);
+}
+.user-table tr td {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
 }
 
 /*# sourceMappingURL=style.css.map */
