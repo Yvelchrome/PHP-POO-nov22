@@ -6,6 +6,7 @@ class Post extends BaseEntity
 {
     private int $postId;
     private int $userId;
+    private string $title;
     private string $content;
     private string $creationDate;
 
@@ -78,6 +79,24 @@ class Post extends BaseEntity
     public function setCreationDate(string $creationDate): Post
     {
         $this->creationDate = $creationDate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title 
+     * @return self
+     */
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
         return $this;
     }
 }

@@ -13,19 +13,49 @@ class HomeController extends AbstractController
     public function home()
     {
         session_start();
-        $this->render("home.php", [], "connecté");
-    }
-    
 
+        $manager = new PostManager(new PDOFactory());
+        $posts = $manager->getAllPosts();
+        $allUser = new UserManager(new PDOFactory());
+        $users = $allUser->getAllUsers();
+        $this->render("home.php", [
+            "posts" => $posts,
+            "users" => $users
+        ], "connecté");
+    }
+
+
+    #[Route("/home", name: "posting", methods: ["POST"])]
+    public function posting()
+    {
+        session_start();
+        var_dump($_SESSION["User"]["userId"]);
+        $userId = $_SESSION["User"]["userId"];
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        var_dump($title, $content);
+        $manager = new PostManager(new PDOFactory());
+        $newPost = $manager->addPost($userId, $title, $content);
+
+
+        $postManager = new PostManager(new PDOFactory());
+        $posts = $postManager->getAllPosts();
+        $allUser = new UserManager(new PDOFactory());
+        $users = $allUser->getAllUsers();
+        $this->render("home.php", ["posts" => $posts, "users" => $users], "Page d'accueil");
+    }
     /**
      * @param $id
      * @param $truc
      * @param $machin
      * @return void
      */
-    #[Route('/post/{id}/{truc}/{machin}', name: "francis", methods: ["GET"])]
-    public function showOne($id, $truc, $machin)
+    #[Route('/home/delete', name: "francis", methods: ["POST"])]
+    public function deletePost()
     {
-        var_dump($id, $truc);
+        $postId = $_POST["postId"];
+        $deleteManager = new PostManager(new PDOFactory());
+        $delete = $deleteManager->deletePost($postId);
+        header("Location: /home");
     }
 }
