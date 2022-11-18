@@ -13,14 +13,18 @@ class HomeController extends AbstractController
     public function home()
     {
         session_start();
-        $manager = new PostManager(new PDOFactory());
-        $posts = $manager->getAllPosts();
-        $allUser = new UserManager(new PDOFactory());
-        $users = $allUser->getAllUsers();
-        $this->render("home.php", [
-            "posts" => $posts,
-            "users" => $users
-        ], "connecté");
+        if (isset($_SESSION["User"])) {
+            $manager = new PostManager(new PDOFactory());
+            $posts = $manager->getAllPosts();
+            $allUser = new UserManager(new PDOFactory());
+            $users = $allUser->getAllUsers();
+            $this->render("home.php", [
+                "posts" => $posts,
+                "users" => $users
+            ], "connecté");
+        } else {
+            header("Location: /login");
+        }
     }
 
     #[Route("/home", name: "posting", methods: ["POST"])]

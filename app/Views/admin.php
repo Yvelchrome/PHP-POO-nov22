@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <a href="/home">Go back to home</a>
 <form method="post" class="admin">
     <label>Username

@@ -26,11 +26,11 @@ foreach ($posts as $post) :
     <p>Contenu : <?= $post->getContent() ?></p>
     <p>Id du poste : <?= $post->getPostId() ?></p>
     <?php if (($_SESSION["User"]["userId"] === $post->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
-        <form action="home/delete" method="POST"><button>Delete</button>
+        <form action="/home/delete" method="POST"><button>Delete</button>
             <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
             <input type="hidden" name="postUser" value="<?= $post->getUserId() ?>">
         </form>
     <?php endif ?>
-    <form action="post/<?= $post->getPostId() ?>" method="GET"><button>En savoir plus</button></form>
+    <form action="/home/post/<?= $post->getPostId() ?>" method="GET"><button>En savoir plus</button></form>
     <hr>
 <?php endforeach ?>

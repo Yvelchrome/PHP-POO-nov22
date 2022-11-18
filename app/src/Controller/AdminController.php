@@ -12,7 +12,12 @@ class AdminController extends AbstractController
     #[Route('/admin', name: "admin", methods: ["GET"])]
     public function showUserInfo()
     {
-        return $this->render("admin.php", [], "Admin");
+        session_start();
+        if (isset($_SESSION["User"])) {
+            return $this->render("admin.php", [], "Admin");
+        } else {
+            header("Location: /login");
+        }
     }
 
     #[Route('/admin', name: "admin", methods: ["POST"])]
@@ -33,12 +38,16 @@ class AdminController extends AbstractController
     public function showUserlist()
     {
         session_start();
-        if ($_SESSION["User"]["admin"] == 1) {
-            $userManager = new UserManager(new pdoFactory());
-            $users = $userManager->getAllUsers();
-            $this->render("adminUserList.php", ["users" => $users], "Admin");
+        if (isset($_SESSION["User"])) {
+            if ($_SESSION["User"]["admin"] == 1) {
+                $userManager = new UserManager(new pdoFactory());
+                $users = $userManager->getAllUsers();
+                $this->render("adminUserList.php", ["users" => $users], "Admin");
+            } else {
+                header("Location: /admin");
+            }
         } else {
-            header("Location: /admin");
+            header("Location: /login");
         }
     }
 
