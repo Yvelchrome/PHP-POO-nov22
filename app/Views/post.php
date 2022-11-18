@@ -21,7 +21,9 @@ foreach ($users as $user) {
     </form>
     <form method="POST"><button>Modify</button>
         <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
+        <label for="title">Titre : </label>
         <input type="text" name="title" value="<?= $post->getTitle() ?>">
+        <label for="content">Contenu : </label>
         <input type="text" name="content" value="<?= $post->getContent() ?>">
     </form>
 <?php endif ?>
