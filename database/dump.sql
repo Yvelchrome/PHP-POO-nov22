@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS Comment(
     userId INT NOT NULL,
     postId INT NOT NULL,
     content TEXT NOT NULL,
+    username VARCHAR(255) NOT NULL,
     creationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (commentId),
     FOREIGN KEY (userId) REFERENCES User(userId) ON DELETE CASCADE,

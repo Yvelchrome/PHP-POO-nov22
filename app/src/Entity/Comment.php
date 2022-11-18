@@ -8,6 +8,7 @@ class Comment extends BaseEntity
     private int $userId;
     private int $postId;
     private string $content;
+    private string $username;
     private string $creationDate;
 
     /**
@@ -99,4 +100,20 @@ class Comment extends BaseEntity
         $this->creationDate = $creationDate;
         return $this;
     }
+
+	/**
+	 * @return string
+	 */
+	public function getUsername(): string {
+		return $this->username;
+	}
+	
+	/**
+	 * @param string $username 
+	 * @return self
+	 */
+	public function setUsername(string $username): self {
+		$this->username = $username;
+		return $this;
+	}
 }

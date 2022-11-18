@@ -33,10 +33,6 @@ textarea {
   font-family: "Satoshi", sans-serif;
 }
 
-html {
-  background-color: hsl(217deg, 61%, 27%);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;

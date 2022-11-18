@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Entity\Comment;
+use PDO;
 
 class CommentManager extends BaseManager
 {
@@ -20,5 +21,15 @@ class CommentManager extends BaseManager
         }
 
         return $comments;
+    }
+
+    public function addComment(Comment $comment)
+    {
+        $insert = $this->pdo->prepare("INSERT INTO Comment (userId, postId, content, username) VALUE (:userId, :postId, :content, :username)");
+        $insert->bindValue("userId", $comment->getUserId(), PDO::PARAM_INT);
+        $insert->bindValue("postId", $comment->getPostId(), PDO::PARAM_INT);
+        $insert->bindValue("content", $comment->getContent(), PDO::PARAM_STR);
+        $insert->bindValue("username", $comment->getUsername(), PDO::PARAM_STR);
+        $insert->execute();
     }
 }

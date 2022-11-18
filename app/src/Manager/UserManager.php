@@ -17,7 +17,7 @@ class UserManager extends BaseManager
 
         $users = [];
 
-        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $users[] = new User($data);
         }
 
@@ -28,14 +28,14 @@ class UserManager extends BaseManager
     {;
         session_start();
         $insert = $this->pdo->prepare("INSERT INTO User (username, email, password, admin) VALUES(:username, :email, :password, :admin)");
-        $insert->bindValue("username", $username, \PDO::PARAM_STR);
-        $insert->bindValue("email", $email, \PDO::PARAM_STR);
-        $insert->bindValue("password", $password, \PDO::PARAM_STR);
-        $insert->bindValue("admin", $admin, \PDO::PARAM_INT);
+        $insert->bindValue("username", $username, PDO::PARAM_STR);
+        $insert->bindValue("email", $email, PDO::PARAM_STR);
+        $insert->bindValue("password", $password, PDO::PARAM_STR);
+        $insert->bindValue("admin", $admin, PDO::PARAM_INT);
         $insert->execute();
 
         $users = $this->pdo->prepare("SELECT * FROM User WHERE username = :username");
-        $users->bindValue("username", $username, \PDO::PARAM_STR);
+        $users->bindValue("username", $username, PDO::PARAM_STR);
         $users->execute();
         $userFetch = $users->fetch(PDO::FETCH_ASSOC);
         $_SESSION["User"] = $userFetch;
@@ -60,7 +60,7 @@ class UserManager extends BaseManager
     public function deleteUser(int $userId)
     {
         $delete = $this->pdo->prepare("DELETE FROM User WHERE userId = :userId");
-        $delete->bindValue("userId", $userId, \PDO::PARAM_INT);
+        $delete->bindValue("userId", $userId, PDO::PARAM_INT);
         $delete->execute();
     }
 
@@ -68,11 +68,11 @@ class UserManager extends BaseManager
     {;
         session_start();
         $insert = $this->pdo->prepare("UPDATE User SET username=:username, email=:email, password=:password, admin=:admin WHERE userId = :userId");
-        $insert->bindValue("username", $username, \PDO::PARAM_STR);
-        $insert->bindValue("email", $email, \PDO::PARAM_STR);
-        $insert->bindValue("password", $password, \PDO::PARAM_STR);
-        $insert->bindValue("admin", $admin, \PDO::PARAM_INT);
-        $insert->bindValue("userId", $_SESSION["User"]["userId"], \PDO::PARAM_INT);
+        $insert->bindValue("username", $username, PDO::PARAM_STR);
+        $insert->bindValue("email", $email, PDO::PARAM_STR);
+        $insert->bindValue("password", $password, PDO::PARAM_STR);
+        $insert->bindValue("admin", $admin, PDO::PARAM_INT);
+        $insert->bindValue("userId", $_SESSION["User"]["userId"], PDO::PARAM_INT);
         $insert->execute();
     }
 }
