@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Route\Route;
 use App\Manager\UserManager;
 use App\Factory\PDOFactory;
+use App\Entity\User;
 
 class LoginController extends AbstractController
 {
@@ -22,10 +23,14 @@ class LoginController extends AbstractController
     public function executeLogin()
     {
         session_start();
+        $oneUser = new User();
         $username = $_POST["username"];
         $password = hash("sha512", $_POST["password"]);
+        $oneUser->setUsername($username);
+        $oneUser->setPassword($password);
         $manager = new UserManager(new PDOFactory());
-        $user = $manager->checkUser($username, $password);
+
+        $user = $manager->checkUser($oneUser);
         if (!$user) {
             $this->render("login.php", ['error' => 'le nom d\'utilisateur ou le mot de passe est incorrect'], "mdp or user invalide");
             exit;

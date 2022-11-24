@@ -22,16 +22,18 @@ class PostManager extends BaseManager
         return $posts;
     }
 
-    public function addPost(int $userId, string $title, string $content)
+    public function addPost(Post $post): ?Post
     {
         $insert = $this->pdo->prepare("INSERT INTO Post (userId,title,content) VALUES (:userId,:title,:content)");
-        $insert->bindValue("userId", $userId, \PDO::PARAM_INT);
-        $insert->bindValue("title", $title, \PDO::PARAM_STR);
-        $insert->bindValue("content", $content, \PDO::PARAM_STR);
+        $insert->bindValue("userId", $post->getUserId(), \PDO::PARAM_INT);
+        $insert->bindValue("title", $post->getTitle(), \PDO::PARAM_STR);
+        $insert->bindValue("content", $post->getContent(), \PDO::PARAM_STR);
         $insert->execute();
+
+        return $post;
     }
 
-    public function deletePost(int $postId)
+    public function deletePost(int $postId): void
     {
         $delete = $this->pdo->prepare("DELETE FROM Post WHERE postId = :postId");
         $delete->bindValue("postId", $postId, \PDO::PARAM_INT);

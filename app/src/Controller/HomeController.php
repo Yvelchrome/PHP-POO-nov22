@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Factory\PDOFactory;
 use App\Manager\PostManager;
 use App\Route\Route;
@@ -31,14 +32,18 @@ class HomeController extends AbstractController
     public function posting()
     {
         session_start();
+        $newpost = new Post();
+
         var_dump($_SESSION["User"]["userId"]);
         $userId = $_SESSION["User"]["userId"];
         $title = $_POST["title"];
         $content = $_POST["content"];
+        $newpost->setUserId($userId);
+        $newpost->setTitle($title);
+        $newpost->setContent($content);
         var_dump($title, $content);
         $manager = new PostManager(new PDOFactory());
-        $newPost = $manager->addPost($userId, $title, $content);
-
+        $newPost = $manager->addPost($newpost);
         $postManager = new PostManager(new PDOFactory());
         $posts = $postManager->getAllPosts();
         $allUser = new UserManager(new PDOFactory());

@@ -24,7 +24,7 @@ foreach ($posts as $post) :
     <p> Créez : <?= $post->getCreationDate() ?></p>
     <h4>Titre : <?= $post->getTitle() ?></h4>
     <p>Contenu : <?= $post->getContent() ?></p>
-    <p>Id du poste : <?= $post->getPostId() ?></p>
+    <p>id du poste : <?= $post->getPostId() ?></p>
     <?php if (($_SESSION["User"]["userId"] === $post->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
         <form action="/home/delete" method="POST"><button>Delete</button>
             <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
