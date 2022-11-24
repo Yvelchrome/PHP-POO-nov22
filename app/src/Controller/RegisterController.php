@@ -16,7 +16,7 @@ class RegisterController extends AbstractController
     }
     #[Route("/", name: "register", methods: ["POST"])]
     public function executeAdd()
-    {   
+    {
         $newUser = new User();
         $username = $_POST["username"];
         $email = $_POST["email"];
