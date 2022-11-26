@@ -101,19 +101,21 @@ class Comment extends BaseEntity
         return $this;
     }
 
-	/**
-	 * @return string
-	 */
-	public function getUsername(): string {
-		return $this->username;
-	}
-	
-	/**
-	 * @param string $username 
-	 * @return self
-	 */
-	public function setUsername(string $username): self {
-		$this->username = $username;
-		return $this;
-	}
+    /**
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username 
+     * @return self
+     */
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+        return $this;
+    }
 }
