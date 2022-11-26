@@ -56,12 +56,5 @@ class HomeController extends AbstractController
      * @param $machin
      * @return void
      */
-    #[Route('/home/delete', name: "delete", methods: ["POST"])]
-    public function deletePost()
-    {
-        $postId = $_POST["postId"];
-        $deleteManager = new PostManager(new PDOFactory());
-        $delete = $deleteManager->deletePost($postId);
-        header("Location: /home");
-    }
+
 }

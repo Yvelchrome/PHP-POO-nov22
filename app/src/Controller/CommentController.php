@@ -23,7 +23,17 @@ class CommentController extends AbstractController
         $newComment->setContent($comment);
         $newComment->setUsername($username);
         $manager = new CommentManager(new PDOFactory());
-        $com = $manager->addComment($newComment);
+        $manager->addComment($newComment);
+        header("Location: /home/post/${postId}");
+    }
+
+    #[Route('/home/delete/comment', name: "delete", methods: ["POST"])]
+    public function deletePost()
+    {
+        $commentId = $_POST["commentId"];
+        $postId = $_POST["postId"];
+        $deleteManager = new CommentManager(new PDOFactory());
+        $deleteManager->deleteComment($commentId);
         header("Location: /home/post/${postId}");
     }
 }
