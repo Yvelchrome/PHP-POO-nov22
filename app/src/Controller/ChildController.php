@@ -10,7 +10,6 @@ use App\Route\Route;
 class ChildController extends AbstractController
 {
     #[Route("/home/post/comment/child", name: "childComment", methods: ["POST"])]
-
     public function childComment(){
         session_start();
         $childComment = new Child();
