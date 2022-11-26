@@ -75,5 +75,11 @@ class UserManager extends BaseManager
         $insert->bindValue("admin", $admin, PDO::PARAM_INT);
         $insert->bindValue("userId", $_SESSION["User"]["userId"], PDO::PARAM_INT);
         $insert->execute();
+
+        $checking = $this->pdo->prepare("SELECT * FROM User WHERE userId = :userId");
+        $checking->bindValue("userId", $_SESSION["User"]["userId"], PDO::PARAM_STR);
+        $checking->execute();
+        $userFetch = $checking->fetch(PDO::FETCH_ASSOC);
+        $_SESSION["User"] = $userFetch;
     }
 }
