@@ -35,10 +35,10 @@ class CommentManager extends BaseManager
 
 
 
-    public function deleteComment(int $commentId): void
+    public function deleteComment(Comment $comment)
     {
         $delete = $this->pdo->prepare("DELETE FROM Comment WHERE commentId = :commentId");
-        $delete->bindValue("commentId", $commentId, \PDO::PARAM_INT);
+        $delete->bindValue("commentId", $comment->getCommentId(), \PDO::PARAM_INT);
         $delete->execute();
     }
 }

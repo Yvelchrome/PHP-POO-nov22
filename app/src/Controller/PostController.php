@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Factory\PDOFactory;
 use App\Manager\ChildManager;
 use App\Manager\CommentManager;
@@ -35,8 +36,12 @@ class PostController extends AbstractController
     {
         $title = $_POST["title"];
         $content = $_POST["content"];
+        $postModify = new Post();
+        $postModify->setTitle($title);
+        $postModify->setContent($content);
+        $postModify->setPostId($id);
         $post = new PostManager(new PDOFactory());
-        $modify = $post->modifyPost($title, $content, $id);
+        $post->modifyPost($postModify);
         header("Location: /home/post/${id}");
     }
 
@@ -45,7 +50,8 @@ class PostController extends AbstractController
     {
         $postId = $_POST["postId"];
         $deleteManager = new PostManager(new PDOFactory());
-        $delete = $deleteManager->deletePost($postId);
+        $postDelete = new Post();
+        $deleteManager->deletePost($postDelete->setPostId($postId));
         header("Location: /home");
     }
 }
