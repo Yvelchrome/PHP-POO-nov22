@@ -46,10 +46,6 @@ foreach ($comments as $comment) : ?>
         <h2>l'id du comment : <?= $comment->getCommentId() ?>, <?= $comment->getCreationDate() ?></h2>
         <h3>celui qui a comment : <?= $comment->getUsername() ?></h3>
         <h1>le comment : <?= $comment->getContent() ?></h1>
-        <form action=""><label for="child">Comment</label>
-            <input type="text" name="child">
-            <button>envoyer</button>
-        </form>
         <?php if (($_SESSION["User"]["userId"] === $comment->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
             <form action="/home/delete/comment" method="POST"><button>Delete</button>
                 <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
@@ -57,5 +53,9 @@ foreach ($comments as $comment) : ?>
                 <input type="hidden" name="commentUser" value="<?= $comment->getUserId() ?>">
             </form>
         <?php endif ?>
+        <form action=""><label for="child">Comment</label>
+            <input type="text" name="child">
+            <button>envoyer</button>
+        </form>
     <?php endif; ?>
 <?php endforeach; ?>
