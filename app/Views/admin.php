@@ -12,7 +12,6 @@
     </label>
     <label>Password
         <input type="password" name="password" required>
-
     </label>
     <input type="submit" value="Update Info">
 </form>

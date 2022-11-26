@@ -14,20 +14,19 @@
         <tr>
             <td><?= $user->getUsername() ?></td>
             <td><?= $user->getEmail() ?></td>
-            <td>
-                <form method="post">
-                    <input type="hidden" name="userId" value="<?= $user->getUserId() ?>">
+            <form method="post">
+                <td>
                     <input type="hidden" name="admin" value="<?= $user->getAdmin() ?>">
                     <input type="hidden" name="checkboxValue" value='0'>
                     <input type="checkbox" name="checkboxValue" value='1' disabled <?= $user->getAdmin() == 1 ? "checked" : "" ?>>
-                </form>
-            <td>
-                <form method="post">
+                </td>
+                <td>
                     <label>Delete
-                        <input type="submit" name="userId" value="<?php $user->getUserId() ?>">
+                        <input type="hidden" name="userId" value="<?= $user->getUserId() ?>">
+                        <input type="submit" value="">
                     </label>
-                </form>
-            </td>
+                </td>
+            </form>
         </tr>
     <?php endforeach ?>
 </table>
