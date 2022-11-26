@@ -43,7 +43,7 @@ class HomeController extends AbstractController
         $newpost->setContent($content);
         var_dump($title, $content);
         $manager = new PostManager(new PDOFactory());
-        $newPost = $manager->addPost($newpost);
+        $manager->addPost($newpost);
         $postManager = new PostManager(new PDOFactory());
         $posts = $postManager->getAllPosts();
         $allUser = new UserManager(new PDOFactory());
