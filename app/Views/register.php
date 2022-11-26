@@ -1,7 +1,7 @@
 <div class="index">
     <div class="title">
         <h1 class="title__h1">PHP POO NOV22</h1>
-        <h2 class="title__h2">Steven Godin | Loïc Jin | Baptiste Verdier</h2>
+        <h2 class="title__h2">Steven Godin | Loïc Jin</h2>
     </div>
     <section class="container container--sign-up">
         <form class="container__form" method="post">
