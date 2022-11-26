@@ -11,7 +11,8 @@
         <input type="checkbox" name="admin" value="1" <?= $_SESSION["User"]["admin"] == 1 ? "checked" : "" ?>>
     </label>
     <label>Password
-        <input type=" text" name="password" required>
+        <input type="password" name="password" required>
+
     </label>
     <input type="submit" value="Update Info">
 </form>

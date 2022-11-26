@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Factory\PDOFactory;
+use App\Manager\ChildManager;
 use App\Manager\CommentManager;
 use App\Manager\PostManager;
 use App\Route\Route;
@@ -21,7 +22,9 @@ class PostController extends AbstractController
             $onePost = $manager->getPost($id);
             $comment = new CommentManager(new PDOFactory());
             $allComment = $comment->getAllComments();
-            $this->render("post.php", ["post" => $onePost, "users" => $users, "comments" => $allComment], "Super Post");
+            $childComment = new ChildManager(new PDOFactory);
+            $allChildComment = $childComment->getAllChildComments();
+            $this->render("post.php", ["post" => $onePost, "users" => $users, "comments" => $allComment, "childComments" => $allChildComment], "Super Post");
         } else {
             header("Location: /login");
         }

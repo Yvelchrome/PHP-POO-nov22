@@ -1,4 +1,7 @@
 <?php
+
+use App\Entity\Comment;
+
 $idUser = $_SESSION["User"]["userId"];
 $nameUser = $_SESSION["User"]["username"];
 /** @var App\Entity\Post $post */
@@ -41,6 +44,7 @@ foreach ($users as $user) {
 <hr>
 <?php
 /** @var App\Entity\Comment[] $comments */
+/** @var App\Entity\Child[] $childComments */
 foreach ($comments as $comment) : ?>
     <?php if ($post->getPostId() === $comment->getPostId()) : ?>
         <h2>l'id du comment : <?= $comment->getCommentId() ?>, <?= $comment->getCreationDate() ?></h2>
@@ -53,9 +57,27 @@ foreach ($comments as $comment) : ?>
                 <input type="hidden" name="commentUser" value="<?= $comment->getUserId() ?>">
             </form>
         <?php endif ?>
-        <form action=""><label for="child">Comment</label>
-            <input type="text" name="child">
+        <form action="comment/child" method="POST">
+            <label for="content">Comment</label>
+            <input type="text" name="content" required>
+            <input type="hidden" name="userId" value="<?= $idUser ?>">
+            <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
+            <input type="hidden" name="username" value="<?= $nameUser ?>">
+            <input type="hidden" name="commentId" value="<?= $comment->getCommentId() ?>">
+            <?php var_dump($comment->getCommentId()) ?>
             <button>envoyer</button>
         </form>
+        <?php foreach ($childComments as $childComment) : ?>
+            <?php if ($comment->getCommentId() === $childComment->getCommentId()) : ?>
+                <div style="margin-left: 40px;">
+                    <h3>id du comment : <?= $comment->getCommentId() ?></h3>
+                    <h4> id du child : <?= $childComment->getChildId() ?></h4>
+                    <p>contenu du child : <?= $childComment->getContent() ?></p>
+                    <h5>position du child commment : <?= $childComment->getPosition() ?></h1>
+                </div>
+                <hr>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <hr>
     <?php endif; ?>
 <?php endforeach; ?>
