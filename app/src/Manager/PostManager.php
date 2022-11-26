@@ -33,10 +33,10 @@ class PostManager extends BaseManager
         return $post;
     }
 
-    public function deletePost(int $postId): void
+    public function deletePost(Post $post)
     {
         $delete = $this->pdo->prepare("DELETE FROM Post WHERE postId = :postId");
-        $delete->bindValue("postId", $postId, \PDO::PARAM_INT);
+        $delete->bindValue("postId", $post->getPostId(), \PDO::PARAM_INT);
         $delete->execute();
     }
     public function getPost(int $postId): ?Post
@@ -51,12 +51,12 @@ class PostManager extends BaseManager
         return null;
     }
 
-    public function modifyPost(string $title, string $content, int $postId)
+    public function modifyPost(Post $post)
     {
         $modify = $this->pdo->prepare("UPDATE Post SET title = :title, content = :content WHERE postId = :postId");
-        $modify->bindValue("title", $title, \PDO::PARAM_STR);
-        $modify->bindValue("content", $content, \PDO::PARAM_STR);
-        $modify->bindValue("postId", $postId, \PDO::PARAM_INT);
+        $modify->bindValue("title", $post->getTitle(), \PDO::PARAM_STR);
+        $modify->bindValue("content", $post->getContent(), \PDO::PARAM_STR);
+        $modify->bindValue("postId", $post->getPostId(), \PDO::PARAM_INT);
         $modify->execute();
     }
 }
