@@ -26,7 +26,7 @@ foreach ($posts as $post) :
     };
 ?>
     <h3>Créateur : <?= $postUser ?></h3>
-    <img src="/app/src/assets/images/<?= $post->getImage() ?>" alt="">
+    <img src="./src/assets/images/<?= $post->getImage() ?>" alt="">
     <p> Créez : <?= $post->getCreationDate() ?></p>
     <h4>Titre : <?= $post->getTitle() ?></h4>
     <p>Contenu : <?= $post->getContent() ?></p>

@@ -41,15 +41,13 @@ class HomeController extends AbstractController
         $filename = $_FILES["image"]["name"];
 
         $filetmpname = $_FILES["image"]["tmp_name"];
-        $folder = '../src/assets/images/';
+        $folder = './src/assets/images/';
         move_uploaded_file($filetmpname, $folder . $filename);
-        var_dump($filename);
 
         $newpost->setUserId($userId);
         $newpost->setTitle($title);
         $newpost->setContent($content);
         $newpost->setImage($filename);
-        var_dump($title, $content);
         $manager = new PostManager(new PDOFactory());
         $manager->addPost($newpost);
         $postManager = new PostManager(new PDOFactory());
