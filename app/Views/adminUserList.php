@@ -30,3 +30,4 @@
         </tr>
     <?php endforeach ?>
 </table>
+<a href="/home">home</a>

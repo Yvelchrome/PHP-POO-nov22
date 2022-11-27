@@ -16,14 +16,14 @@ class CommentManager extends BaseManager
 
         $comments = [];
 
-        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
         }
 
         return $comments;
     }
 
-    public function addComment(Comment $comment)
+    public function addComment(Comment $comment): ?Comment
     {
         $insert = $this->pdo->prepare("INSERT INTO Comment (userId, postId, content, username) VALUE (:userId, :postId, :content, :username)");
         $insert->bindValue("userId", $comment->getUserId(), PDO::PARAM_INT);
@@ -31,6 +31,7 @@ class CommentManager extends BaseManager
         $insert->bindValue("content", $comment->getContent(), PDO::PARAM_STR);
         $insert->bindValue("username", $comment->getUsername(), PDO::PARAM_STR);
         $insert->execute();
+        return $comment;
     }
 
 
@@ -38,7 +39,7 @@ class CommentManager extends BaseManager
     public function deleteComment(Comment $comment)
     {
         $delete = $this->pdo->prepare("DELETE FROM Comment WHERE commentId = :commentId");
-        $delete->bindValue("commentId", $comment->getCommentId(), \PDO::PARAM_INT);
+        $delete->bindValue("commentId", $comment->getCommentId(), PDO::PARAM_INT);
         $delete->execute();
     }
 }

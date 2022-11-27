@@ -10,22 +10,30 @@ use App\Route\Route;
 class ChildController extends AbstractController
 {
     #[Route("/home/post/comment/child", name: "childComment", methods: ["POST"])]
-    public function childComment(){
+    public function childComment()
+    {
         session_start();
         $childComment = new Child();
-        $userId = $_SESSION["User"]["userId"];
         $postId = $_POST["postId"];
-        $content = $_POST["content"];
-        $username = $_SESSION["User"]["username"];
-        $commentId = $_POST["commentId"];
-        $childComment->setUserId($userId);
-        $childComment->setPostId($postId);
-        $childComment->setContent($content);
-        $childComment->setUsername($username);
-        $childComment->setCommentId($commentId);
+        $childComment->setUserId($_SESSION["User"]["userId"]);
+        $childComment->setPostId($_POST["postId"]);
+        $childComment->setContent($_POST["content"]);
+        $childComment->setUsername($_SESSION["User"]["username"]);
+        $childComment->setCommentId($_POST["commentId"]);
         $manager = new ChildManager(new PDOFactory());
         $manager->addChildComment($childComment);
         header("Location: /home/post/${postId}");
+    }
 
+
+
+    #[Route('/home/delete/comment/child', name: "delete", methods: ["POST"])]
+    public function deleteChild()
+    {
+        $postId = $_POST["postId"];
+        $deleteManager = new ChildManager(new PDOFactory());
+        $commentChildDelete = new Child();
+        $deleteManager->deleteChildComment($commentChildDelete->setChildId($_POST["childId"]));
+        header("Location: /home/post/${postId}");
     }
 }

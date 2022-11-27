@@ -1,6 +1,9 @@
 <h1><a href="/home">Bienvenue <?= $_SESSION["User"]["username"] ?></a></h1>
 <a href="/login">Home</a>
 <a href="/admin">Admin</a>
+<?php if ($_SESSION["User"]["admin"] === 1) : ?>
+    <a href="/admin/userList">User List</a>
+<?php endif; ?>
 <form action="" method="POST">
     <label for="title">Titre</label>
     <input type="text" name="title" required>

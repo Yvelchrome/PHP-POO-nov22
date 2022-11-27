@@ -14,14 +14,11 @@ class CommentController extends AbstractController
     {
         session_start();
         $newComment = new Comment();
-        $userId = $_SESSION["User"]["userId"];
         $postId = $_POST["postId"];
-        $comment = $_POST["comment"];
-        $username = $_SESSION["User"]["username"];
-        $newComment->setUserId($userId);
-        $newComment->setPostId($postId);
-        $newComment->setContent($comment);
-        $newComment->setUsername($username);
+        $newComment->setUserId($_SESSION["User"]["userId"]);
+        $newComment->setPostId($_POST["postId"]);
+        $newComment->setContent($_POST["comment"]);
+        $newComment->setUsername($_SESSION["User"]["username"]);
         $manager = new CommentManager(new PDOFactory());
         $manager->addComment($newComment);
         header("Location: /home/post/${postId}");
@@ -30,11 +27,10 @@ class CommentController extends AbstractController
     #[Route('/home/delete/comment', name: "delete", methods: ["POST"])]
     public function deletePost()
     {
-        $commentId = $_POST["commentId"];
         $postId = $_POST["postId"];
         $deleteManager = new CommentManager(new PDOFactory());
         $commentDelete = new Comment();
-        $deleteManager->deleteComment($commentDelete->setCommentId($commentId));
+        $deleteManager->deleteComment($commentDelete->setCommentId($_POST["commentId"]));
         header("Location: /home/post/${postId}");
     }
 }

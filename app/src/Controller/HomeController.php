@@ -22,7 +22,7 @@ class HomeController extends AbstractController
             $this->render("home.php", [
                 "posts" => $posts,
                 "users" => $users
-            ], "connecté");
+            ], "Page d'accueil");
         } else {
             header("Location: /login");
         }
@@ -33,15 +33,9 @@ class HomeController extends AbstractController
     {
         session_start();
         $newpost = new Post();
-
-        var_dump($_SESSION["User"]["userId"]);
-        $userId = $_SESSION["User"]["userId"];
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $newpost->setUserId($userId);
-        $newpost->setTitle($title);
-        $newpost->setContent($content);
-        var_dump($title, $content);
+        $newpost->setUserId($_SESSION["User"]["userId"]);
+        $newpost->setTitle($_POST["title"]);
+        $newpost->setContent($_POST["content"]);
         $manager = new PostManager(new PDOFactory());
         $manager->addPost($newpost);
         $postManager = new PostManager(new PDOFactory());
@@ -50,11 +44,4 @@ class HomeController extends AbstractController
         $users = $allUser->getAllUsers();
         $this->render("home.php", ["posts" => $posts, "users" => $users], "Page d'accueil");
     }
-    /**
-     * @param $id
-     * @param $truc
-     * @param $machin
-     * @return void
-     */
-
 }
