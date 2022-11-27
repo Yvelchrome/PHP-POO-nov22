@@ -39,9 +39,10 @@ class HomeController extends AbstractController
         $title = $_POST["title"];
         $content = $_POST["content"];
         $filename = $_FILES["image"]["name"];
-        /* $filetmpname = $_FILES["image"]["tmp_name"];
-        $folder = '/app/src/assets/images/';
-        move_uploaded_file($filetmpname, $folder . $filename); */
+
+        $filetmpname = $_FILES["image"]["tmp_name"];
+        $folder = '../src/assets/images/';
+        move_uploaded_file($filetmpname, $folder . $filename);
         var_dump($filename);
 
         $newpost->setUserId($userId);

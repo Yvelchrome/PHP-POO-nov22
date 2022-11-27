@@ -1,7 +1,7 @@
 <h1><a href="/home">Bienvenue <?= $_SESSION["User"]["username"] ?></a></h1>
 <a href="/login">Home</a>
 <a href="/admin">Admin</a>
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     <label>Titre
         <input type="text" name="title" required>
     </label>
@@ -26,7 +26,7 @@ foreach ($posts as $post) :
     };
 ?>
     <h3>Créateur : <?= $postUser ?></h3>
-    <img src="/assets/images/<?= $post->getImage() ?>" alt="">
+    <img src="/app/src/assets/images/<?= $post->getImage() ?>" alt="">
     <p> Créez : <?= $post->getCreationDate() ?></p>
     <h4>Titre : <?= $post->getTitle() ?></h4>
     <p>Contenu : <?= $post->getContent() ?></p>
