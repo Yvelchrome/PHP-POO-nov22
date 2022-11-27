@@ -8,8 +8,6 @@
     <?php
     /** @var App\Entity\User[] $users */
 
-    use App\Entity\User;
-
     foreach ($users as $user) : ?>
         <tr>
             <td><?= $user->getUsername() ?></td>
