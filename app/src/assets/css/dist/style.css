@@ -239,9 +239,10 @@ textarea:focus {
   gap: 25px;
   max-width: 90%;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .home .posts img {
-  max-width: 100%;
+  max-width: 350px;
 }
 .home .posts-item {
   background-color: hsl(0deg, 0%, 95%);
