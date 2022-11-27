@@ -34,13 +34,20 @@ class HomeController extends AbstractController
         session_start();
         $newpost = new Post();
 
-        var_dump($_SESSION["User"]["userId"]);
+
         $userId = $_SESSION["User"]["userId"];
         $title = $_POST["title"];
         $content = $_POST["content"];
+        $filename = $_FILES["image"]["name"];
+        /* $filetmpname = $_FILES["image"]["tmp_name"];
+        $folder = '/app/src/assets/images/';
+        move_uploaded_file($filetmpname, $folder . $filename); */
+        var_dump($filename);
+
         $newpost->setUserId($userId);
         $newpost->setTitle($title);
         $newpost->setContent($content);
+        $newpost->setImage($filename);
         var_dump($title, $content);
         $manager = new PostManager(new PDOFactory());
         $manager->addPost($newpost);
@@ -56,5 +63,4 @@ class HomeController extends AbstractController
      * @param $machin
      * @return void
      */
-
 }

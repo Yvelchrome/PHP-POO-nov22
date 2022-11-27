@@ -24,10 +24,11 @@ class PostManager extends BaseManager
 
     public function addPost(Post $post): ?Post
     {
-        $insert = $this->pdo->prepare("INSERT INTO Post (userId,title,content) VALUES (:userId,:title,:content)");
+        $insert = $this->pdo->prepare("INSERT INTO Post (userId, title, content, image) VALUES (:userId, :title, :content, :image)");
         $insert->bindValue("userId", $post->getUserId(), \PDO::PARAM_INT);
         $insert->bindValue("title", $post->getTitle(), \PDO::PARAM_STR);
         $insert->bindValue("content", $post->getContent(), \PDO::PARAM_STR);
+        $insert->bindValue("image", $post->getImage(), \PDO::PARAM_STR);
         $insert->execute();
 
         return $post;

@@ -2,12 +2,17 @@
 <a href="/login">Home</a>
 <a href="/admin">Admin</a>
 <form action="" method="POST">
-    <label for="title">Titre</label>
-    <input type="text" name="title" required>
-    <label for="content">Créez un nouveau post</label>
-    <textarea name="content" id="content" cols="30
+    <label>Titre
+        <input type="text" name="title" required>
+    </label>
+    <label>Créez un nouveau post
+        <textarea name="content" id="content" cols="30
     0" rows="3" required></textarea>
-    <button>Envoyer</button>
+    </label>
+    <label>Image
+        <input type="file" name="image" accept="image/jpeg, image/png, image/gif, image/jpg" value="">
+    </label>
+    <input type="submit" value="Envoyez">
 </form>
 
 <?php
@@ -21,12 +26,14 @@ foreach ($posts as $post) :
     };
 ?>
     <h3>Créateur : <?= $postUser ?></h3>
+    <img src="/assets/images/<?= $post->getImage() ?>" alt="">
     <p> Créez : <?= $post->getCreationDate() ?></p>
     <h4>Titre : <?= $post->getTitle() ?></h4>
     <p>Contenu : <?= $post->getContent() ?></p>
     <p>id du poste : <?= $post->getPostId() ?></p>
     <?php if (($_SESSION["User"]["userId"] === $post->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
-        <form action="/home/delete" method="POST"><button>Delete</button>
+        <form action="/home/delete" method="POST">
+            <button>Delete</button>
             <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
             <input type="hidden" name="postUser" value="<?= $post->getUserId() ?>">
         </form>

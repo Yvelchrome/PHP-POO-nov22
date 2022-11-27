@@ -9,6 +9,7 @@ class Post extends BaseEntity
     private string $title;
     private string $content;
     private string $creationDate;
+    private string $image;
 
     /**
      * @return int
@@ -97,6 +98,24 @@ class Post extends BaseEntity
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     * @return Post
+     */
+    public function setImage(string $image): Post
+    {
+        $this->image = $image;
         return $this;
     }
 }
