@@ -23,10 +23,12 @@
                         <input type="checkbox" name="checkboxValue" value='1' disabled <?= $user->getAdmin() == 1 ? "checked" : "" ?>>
                     </td>
                     <td>
-                        <label>Delete
-                            <input type="hidden" name="userId" value="<?= $user->getUserId() ?>">
-                            <input type="submit" value="">
-                        </label>
+                        <?php if ($user->getUserId() !== $_SESSION["User"]["userId"]) : ?>
+                            <label>Delete
+                                <input type="hidden" name="userId" value="<?= $user->getUserId() ?>">
+                                <input type="submit" value="">
+                            </label>
+                        <?php endif ?>
                     </td>
                 </form>
             </tr>
