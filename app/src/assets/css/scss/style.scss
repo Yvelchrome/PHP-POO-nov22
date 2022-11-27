@@ -10,11 +10,9 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    color: $primary-light;
+    color: $primary-dark;
     &__h1 {
       font-size: 3rem;
-    }
-    &__h2 {
     }
   }
   .container {
