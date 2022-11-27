@@ -15,6 +15,7 @@
 }
 h1,
 h2,
+h3,
 label,
 span {
   font-weight: 700;
@@ -28,6 +29,7 @@ a {
 }
 
 p,
+td,
 textarea {
   font-weight: 400;
   font-family: "Satoshi", sans-serif;
@@ -51,8 +53,36 @@ input {
   border: none;
 }
 
-a {
+a,
+a:hover {
   text-decoration: none;
+  color: unset;
+}
+
+textarea {
+  resize: vertical;
+  border: none;
+}
+textarea:focus {
+  outline: none;
+}
+
+.header {
+  background-color: hsl(0deg, 0%, 5%);
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-direction: column;
+  color: hsl(0deg, 0%, 95%);
+}
+.header .list {
+  display: flex;
+  gap: 15px;
+}
+.header .list-link:hover {
+  color: hsl(0deg, 0%, 50%);
 }
 
 .index {
@@ -161,31 +191,182 @@ a {
   color: hsl(217deg, 61%, 27%);
 }
 
-.admin input {
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+}
+.home .form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: hsl(0deg, 0%, 95%);
+  padding: 2rem;
+}
+.home .form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.home .form input[type=text]:enabled,
+.home .form textarea:enabled {
+  border-bottom: 2px solid hsl(197deg, 68%, 34%);
+  background-color: hsl(0deg, 0%, 95%);
+  padding-bottom: 0.3em;
+}
+.home .form input[type=text]:hover,
+.home .form textarea:hover {
+  border-bottom: 2px solid hsl(217deg, 61%, 27%);
+}
+.home .form input[type=text]:valid,
+.home .form textarea:valid {
+  border-bottom: 2px solid green;
+}
+.home .form input[type=submit] {
+  border-radius: 10px;
+  background-color: hsl(197deg, 68%, 34%);
+  padding: 0.8rem;
+  color: hsl(0deg, 0%, 95%);
+}
+.home .form input[type=submit]:hover {
+  background-color: hsl(217deg, 61%, 27%);
+}
+.home .posts {
+  display: flex;
+  gap: 25px;
+  max-width: 90%;
+  flex-wrap: wrap;
+}
+.home .posts img {
+  max-width: 100%;
+}
+.home .posts-item {
+  background-color: hsl(0deg, 0%, 95%);
+  padding: 20px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.home .posts-item .created {
+  color: hsl(0deg, 0%, 50%);
+  font-size: 12px;
+}
+.home .posts-item .title {
+  font-size: 22px;
+}
+.home .posts-item .content {
+  font-size: 18px;
+}
+.home .posts-item .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home .posts-item .actions .know-more {
+  border-radius: 10px;
+  border: 2px solid hsl(0deg, 0%, 5%);
+  padding: 0.4rem 0.6rem;
+  color: hsl(0deg, 0%, 5%);
+}
+.home .posts-item .actions .know-more:hover {
+  background-color: hsl(0deg, 0%, 5%);
+  color: hsl(0deg, 0%, 95%);
+}
+.home .posts-item .actions input[type=submit] {
+  border-radius: 10px;
+  background-color: red;
+  padding: 0.4rem 0.6rem;
+  color: hsl(0deg, 0%, 95%);
+}
+.home .posts-item .actions input[type=submit]:hover {
+  background-color: darkred;
+}
+
+.admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+}
+.admin .form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: hsl(0deg, 0%, 95%);
+  padding: 2rem;
+}
+.admin .form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.admin .form input[type=text]:enabled,
+.admin .form input[type=password]:enabled {
+  border-bottom: 2px solid hsl(197deg, 68%, 34%);
+  background-color: hsl(0deg, 0%, 95%);
+  padding-bottom: 0.3em;
+}
+.admin .form input[type=text]:hover,
+.admin .form input[type=password]:hover {
+  border-bottom: 2px solid hsl(217deg, 61%, 27%);
+}
+.admin .form input[type=text]:valid,
+.admin .form input[type=password]:valid {
+  border-bottom: 2px solid green;
+}
+.admin .form input[type=submit] {
+  border-radius: 10px;
+  background-color: hsl(197deg, 68%, 34%);
+  padding: 0.8rem;
+  color: hsl(0deg, 0%, 95%);
+}
+.admin .form input[type=submit]:hover {
+  background-color: hsl(217deg, 61%, 27%);
+}
+.admin .form input[type=checkbox] {
   appearance: auto;
 }
 
-.user-table {
+.user-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+}
+.user-list .user-table {
   border-spacing: 0;
   max-width: 90%;
+  border-radius: 5px;
 }
-.user-table input {
+.user-list .user-table .title {
+  font-weight: 700;
+}
+.user-list .user-table input[type=checkbox] {
   appearance: auto;
 }
-.user-table tr {
+.user-list .user-table tr {
   display: flex;
   gap: 20px;
 }
-.user-table tr:nth-child(odd) {
-  background-color: hsl(0deg, 0%, 50%);
+.user-list .user-table tr:nth-child(odd) {
+  background-color: lightgray;
 }
-.user-table tr:nth-child(even) {
+.user-list .user-table tr:nth-child(even) {
   background-color: hsl(0deg, 0%, 95%);
 }
-.user-table tr td {
+.user-list .user-table tr td {
   width: 100px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px 0px;
 }
 

@@ -1,5 +1,25 @@
 @use "partials" as *;
 
+.header {
+  background-color: $primary-dark;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-direction: column;
+  color: $primary-light;
+  .list {
+    display: flex;
+    gap: 15px;
+    &-link {
+      &:hover {
+        color: $primary-grey;
+      }
+    }
+  }
+}
+
 .index {
   display: flex;
   justify-content: center;
@@ -109,32 +129,181 @@
   }
 }
 
-.admin {
-  input {
-    appearance: auto;
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: $primary-light;
+    padding: 2rem;
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input[type="text"],
+    textarea {
+      &:enabled {
+        border-bottom: 2px solid $primary-blue;
+        background-color: $primary-light;
+        padding-bottom: 0.3em;
+      }
+      &:hover {
+        border-bottom: 2px solid $secondary-blue;
+      }
+      &:valid {
+        border-bottom: 2px solid green;
+      }
+    }
+    input[type="submit"] {
+      border-radius: 10px;
+      background-color: $primary-blue;
+      padding: 0.8rem;
+      color: $primary-light;
+      &:hover {
+        background-color: $secondary-blue;
+      }
+    }
+  }
+  .posts {
+    display: flex;
+    gap: 25px;
+    max-width: 90%;
+    flex-wrap: wrap;
+    img {
+      max-width: 100%;
+    }
+    &-item {
+      background-color: $primary-light;
+      padding: 20px;
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      .created {
+        color: $primary-grey;
+        font-size: 12px;
+      }
+      .title {
+        font-size: 22px;
+      }
+      .content {
+        font-size: 18px;
+      }
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .know-more {
+          border-radius: 10px;
+          border: 2px solid $primary-dark;
+          padding: 0.4rem 0.6rem;
+          color: $primary-dark;
+          &:hover {
+            background-color: $primary-dark;
+            color: $primary-light;
+          }
+        }
+        input[type="submit"] {
+          border-radius: 10px;
+          background-color: red;
+          padding: 0.4rem 0.6rem;
+          color: $primary-light;
+          &:hover {
+            background-color: darkred;
+          }
+        }
+      }
+    }
   }
 }
 
-.user-table {
-  border-spacing: 0;
-  max-width: 90%;
-  input {
-    appearance: auto;
-  }
-  tr {
+.admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+  .form {
     display: flex;
-    gap: 20px;
-    &:nth-child(odd) {
-      background-color: $primary-grey;
-    }
-    &:nth-child(even) {
-      background-color: $primary-light;
-    }
-    td {
-      width: 100px;
+    flex-direction: column;
+    gap: 15px;
+    background-color: $primary-light;
+    padding: 2rem;
+    &-item {
       display: flex;
-      align-items: center;
-      padding: 10px 0px;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      &:enabled {
+        border-bottom: 2px solid $primary-blue;
+        background-color: $primary-light;
+        padding-bottom: 0.3em;
+      }
+      &:hover {
+        border-bottom: 2px solid $secondary-blue;
+      }
+      &:valid {
+        border-bottom: 2px solid green;
+      }
+    }
+    input[type="submit"] {
+      border-radius: 10px;
+      background-color: $primary-blue;
+      padding: 0.8rem;
+      color: $primary-light;
+      &:hover {
+        background-color: $secondary-blue;
+      }
+    }
+    input[type="checkbox"] {
+      appearance: auto;
+    }
+  }
+}
+
+.user-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 50px;
+  .user-table {
+    border-spacing: 0;
+    max-width: 90%;
+    border-radius: 5px;
+    .title {
+      font-weight: 700;
+    }
+    input[type="checkbox"] {
+      appearance: auto;
+    }
+    tr {
+      display: flex;
+      gap: 20px;
+      &:nth-child(odd) {
+        background-color: lightgray;
+      }
+      &:nth-child(even) {
+        background-color: $primary-light;
+      }
+      td {
+        width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0px;
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+<?php include 'header.php'; ?>
 <?php
 
 use App\Entity\Comment;
@@ -11,7 +12,6 @@ foreach ($users as $user) {
     }
 }
 ?>
-<a href="/home">home</a>
 <h3>Créateur : <?= $postUser ?></h3>
 <p> Créez : <?= $post->getCreationDate() ?></p>
 <h4>Titre : <?= $post->getTitle() ?></h4>
