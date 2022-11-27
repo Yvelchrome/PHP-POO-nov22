@@ -53,9 +53,9 @@ foreach ($users as $user) {
 /** @var App\Entity\Child[] $childComments */
 foreach ($comments as $comment) : ?>
     <?php if ($post->getPostId() === $comment->getPostId()) : ?>
-        <h2>l'id du comment : <?= $comment->getCommentId() ?>, <?= $comment->getCreationDate() ?></h2>
-        <h3>celui qui a comment : <?= $comment->getUsername() ?></h3>
-        <h1>le comment : <?= $comment->getContent() ?></h1>
+        <h2>Date : <?= $comment->getCreationDate() ?></h2>
+        <h3>Par : <?= $comment->getUsername() ?></h3>
+        <p>Content : <?= $comment->getContent() ?></p>
         <?php if (($_SESSION["User"]["userId"] === $comment->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
             <form action="/home/delete/comment" method="POST"><button>Delete</button>
                 <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
@@ -75,9 +75,9 @@ foreach ($comments as $comment) : ?>
         <?php foreach ($childComments as $childComment) : ?>
             <?php if ($comment->getCommentId() === $childComment->getCommentId()) : ?>
                 <div style="margin-left: 40px;">
-                    <h3>id du comment : <?= $comment->getCommentId() ?></h3>
-                    <h4> id du child : <?= $childComment->getChildId() ?></h4>
-                    <p>contenu du child : <?= $childComment->getContent() ?></p>
+                    <p>Date : <?= $childComment->getCreationDate() ?></p>
+                    <h4>Par : <?= $childComment->getUsername() ?></h4>
+                    <p>Content : <?= $childComment->getContent() ?></p>
                     <?php if (($_SESSION["User"]["userId"] === $childComment->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
                         <form action="/home/delete/comment/child" method="POST"><button>Delete</button>
                             <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
@@ -85,8 +85,6 @@ foreach ($comments as $comment) : ?>
                         </form>
                     <?php endif ?>
                 </div>
-                <hr>
-
             <?php endif; ?>
         <?php endforeach; ?>
         <hr>
