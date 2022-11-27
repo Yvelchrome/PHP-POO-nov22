@@ -25,7 +25,7 @@ class LoginController extends AbstractController
         session_start();
         $oneUser = new User();
         $oneUser->setUsername($_POST["username"]);
-        $oneUser->setPassword(hash("sha512", $_POST["password"]));
+        $oneUser->setPassword($_POST["password"]);
         $manager = new UserManager(new PDOFactory());
 
         $user = $manager->checkUser($oneUser);

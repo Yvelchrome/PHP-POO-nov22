@@ -44,3 +44,6 @@ CREATE TABLE IF NOT EXISTS Child(
     FOREIGN KEY (postId) REFERENCES Post(postId) ON DELETE CASCADE,
     FOREIGN KEY (commentId) REFERENCES Comment(commentId) ON DELETE CASCADE
 );
+
+INSERT INTO User (username, email, password, admin) VALUES("admin", "admin@gmail.com", "admin", 1);
+INSERT INTO User (username, email, password, admin) VALUES("user", "user@gmail.com","user", 0);
