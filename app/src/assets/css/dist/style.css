@@ -269,6 +269,17 @@ textarea:focus {
   color: hsl(0deg, 0%, 95%);
 }
 
+.comment-input:enabled {
+  border-bottom: 2px solid hsl(197deg, 68%, 34%);
+  padding-bottom: 0.3em;
+}
+.comment-input:hover {
+  border-bottom: 2px solid hsl(217deg, 61%, 27%);
+}
+.comment-input:valid {
+  border-bottom: 2px solid green;
+}
+
 .home {
   display: flex;
   justify-content: center;

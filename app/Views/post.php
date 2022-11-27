@@ -64,8 +64,9 @@ foreach ($comments as $comment) : ?>
             </form>
         <?php endif ?>
         <form action="comment/child" method="POST">
-            <label for="content">Comment</label>
-            <input type="text" name="content" required>
+            <label>Comment
+                <input class="comment-input" type="text" name="content" required>
+            </label>
             <input type="hidden" name="userId" value="<?= $idUser ?>">
             <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
             <input type="hidden" name="username" value="<?= $nameUser ?>">
@@ -85,10 +86,7 @@ foreach ($comments as $comment) : ?>
                         </form>
                     <?php endif ?>
                 </div>
-                <hr>
-
             <?php endif; ?>
         <?php endforeach; ?>
-        <hr>
     <?php endif; ?>
 <?php endforeach; ?>

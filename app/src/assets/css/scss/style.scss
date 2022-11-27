@@ -197,6 +197,19 @@
   }
 }
 
+.comment-input {
+  &:enabled {
+    border-bottom: 2px solid $primary-blue;
+    padding-bottom: 0.3em;
+  }
+  &:hover {
+    border-bottom: 2px solid $secondary-blue;
+  }
+  &:valid {
+    border-bottom: 2px solid green;
+  }
+}
+
 .home {
   display: flex;
   justify-content: center;
