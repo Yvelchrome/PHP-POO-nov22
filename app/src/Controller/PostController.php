@@ -34,11 +34,9 @@ class PostController extends AbstractController
     #[Route("/home/post/{id}", name: "modify", methods: ["POST"])]
     public function modifyP(int $id)
     {
-        $title = $_POST["title"];
-        $content = $_POST["content"];
         $postModify = new Post();
-        $postModify->setTitle($title);
-        $postModify->setContent($content);
+        $postModify->setTitle($_POST["title"]);
+        $postModify->setContent($_POST["content"]);
         $postModify->setPostId($id);
         $post = new PostManager(new PDOFactory());
         $post->modifyPost($postModify);
@@ -48,10 +46,9 @@ class PostController extends AbstractController
     #[Route('/home/delete', name: "delete", methods: ["POST"])]
     public function deletePost()
     {
-        $postId = $_POST["postId"];
         $deleteManager = new PostManager(new PDOFactory());
         $postDelete = new Post();
-        $deleteManager->deletePost($postDelete->setPostId($postId));
+        $deleteManager->deletePost($postDelete->setPostId($_POST["postId"]));
         header("Location: /home");
     }
 }

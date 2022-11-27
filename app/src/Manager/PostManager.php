@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Entity\Post;
+use PDO;
 
 class PostManager extends BaseManager
 {
@@ -15,7 +16,7 @@ class PostManager extends BaseManager
 
         $posts = [];
 
-        while ($data = $query->fetch(\PDO::FETCH_ASSOC)) {
+        while ($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $posts[] = new Post($data);
         }
 
@@ -37,27 +38,28 @@ class PostManager extends BaseManager
     public function deletePost(Post $post)
     {
         $delete = $this->pdo->prepare("DELETE FROM Post WHERE postId = :postId");
-        $delete->bindValue("postId", $post->getPostId(), \PDO::PARAM_INT);
+        $delete->bindValue("postId", $post->getPostId(), PDO::PARAM_INT);
         $delete->execute();
     }
     public function getPost(int $postId): ?Post
     {
         $search = $this->pdo->prepare("SELECT * FROM Post WHERE postId = :postId");
-        $search->bindValue("postId", $postId, \PDO::PARAM_INT);
+        $search->bindValue("postId", $postId, PDO::PARAM_INT);
         $search->execute();
-        $onePost = $search->fetch(\PDO::FETCH_ASSOC);
+        $onePost = $search->fetch(PDO::FETCH_ASSOC);
         if ($onePost) {
             return new Post($onePost);
         }
         return null;
     }
 
-    public function modifyPost(Post $post)
+    public function modifyPost(Post $post): ?Post
     {
         $modify = $this->pdo->prepare("UPDATE Post SET title = :title, content = :content WHERE postId = :postId");
-        $modify->bindValue("title", $post->getTitle(), \PDO::PARAM_STR);
-        $modify->bindValue("content", $post->getContent(), \PDO::PARAM_STR);
-        $modify->bindValue("postId", $post->getPostId(), \PDO::PARAM_INT);
+        $modify->bindValue("title", $post->getTitle(), PDO::PARAM_STR);
+        $modify->bindValue("content", $post->getContent(), PDO::PARAM_STR);
+        $modify->bindValue("postId", $post->getPostId(), PDO::PARAM_INT);
         $modify->execute();
+        return $post;
     }
 }

@@ -22,7 +22,7 @@ class HomeController extends AbstractController
             $this->render("home.php", [
                 "posts" => $posts,
                 "users" => $users
-            ], "connecté");
+            ], "Page d'accueil");
         } else {
             header("Location: /login");
         }

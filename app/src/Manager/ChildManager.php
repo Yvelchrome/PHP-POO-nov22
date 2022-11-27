@@ -1,12 +1,13 @@
-<?php 
+<?php
 
 namespace App\Manager;
 
 use App\Entity\Child;
 use PDO;
 
-class ChildManager extends BaseManager {
-        /**
+class ChildManager extends BaseManager
+{
+    /**
      * @return Child[]
      */
     public function getAllChildComments(): array
@@ -22,7 +23,7 @@ class ChildManager extends BaseManager {
         return $childs;
     }
 
-    public function addChildComment(Child $child)
+    public function addChildComment(Child $child): ?Child
     {
         $insert = $this->pdo->prepare("INSERT INTO Child (userId, postId, content, username, commentId) VALUE (:userId, :postId, :content, :username, :commentId)");
         $insert->bindValue("userId", $child->getUserId(), PDO::PARAM_INT);
@@ -31,6 +32,13 @@ class ChildManager extends BaseManager {
         $insert->bindValue("username", $child->getUsername(), PDO::PARAM_STR);
         $insert->bindValue("commentId", $child->getCommentId(), PDO::PARAM_STR);
         $insert->execute();
+        return $child;
     }
 
+    public function deleteChildComment(Child $child)
+    {
+        $delete = $this->pdo->prepare("DELETE FROM Child WHERE childId = :childId");
+        $delete->bindValue("childId", $child->getChildId(), PDO::PARAM_INT);
+        $delete->execute();
+    }
 }

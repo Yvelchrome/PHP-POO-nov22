@@ -64,7 +64,6 @@ foreach ($comments as $comment) : ?>
             <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
             <input type="hidden" name="username" value="<?= $nameUser ?>">
             <input type="hidden" name="commentId" value="<?= $comment->getCommentId() ?>">
-            <?php var_dump($comment->getCommentId()) ?>
             <button>envoyer</button>
         </form>
         <?php foreach ($childComments as $childComment) : ?>
@@ -73,9 +72,15 @@ foreach ($comments as $comment) : ?>
                     <h3>id du comment : <?= $comment->getCommentId() ?></h3>
                     <h4> id du child : <?= $childComment->getChildId() ?></h4>
                     <p>contenu du child : <?= $childComment->getContent() ?></p>
-                    <h5>position du child commment : <?= $childComment->getPosition() ?></h1>
+                    <?php if (($_SESSION["User"]["userId"] === $childComment->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
+                        <form action="/home/delete/comment/child" method="POST"><button>Delete</button>
+                            <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
+                            <input type="hidden" name="childId" value="<?= $childComment->getChildId() ?>">
+                        </form>
+                    <?php endif ?>
                 </div>
                 <hr>
+
             <?php endif; ?>
         <?php endforeach; ?>
         <hr>
