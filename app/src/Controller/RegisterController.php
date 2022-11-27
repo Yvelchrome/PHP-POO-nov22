@@ -20,7 +20,7 @@ class RegisterController extends AbstractController
         $newUser = new User();
         $newUser->setUsername($_POST["username"]);
         $newUser->setEmail($_POST["email"]);
-        $newUser->setPassword(hash("sha512", $_POST["password"]));
+        $newUser->setPassword($_POST["password"]);
         $newUser->setAdmin($_POST["admin"]);
         $manager = new UserManager(new PDOFactory());
         $manager->addUser($newUser);

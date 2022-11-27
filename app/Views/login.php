@@ -5,6 +5,8 @@
     <div class="title">
         <h1 class="title__h1">PHP POO NOV22</h1>
         <h2 class="title__h2">Steven Godin | Loïc Jin</h2>
+        <p>Utilisateur admin; username : admin, password : admin</p>
+        <p>Utilisateur user; username : user, password : user</p>
     </div>
     <section class="container container--sign-in">
         <form class="container__form" method="post">
