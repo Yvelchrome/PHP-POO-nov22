@@ -9,7 +9,7 @@
     <section class="container container--sign-in">
         <form class="container__form" method="post">
             <label class=" container__form__label">
-                Username / Email
+                Username
                 <input class="container__form__input" name="username" type="text" required>
             </label>
             <label class="container__form__label">
