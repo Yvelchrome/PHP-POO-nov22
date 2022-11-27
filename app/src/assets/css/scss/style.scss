@@ -129,6 +129,74 @@
   }
 }
 
+.post-single {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  flex-direction: column;
+  &-item {
+    background-color: $primary-light;
+    padding: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    .created {
+      color: $primary-grey;
+      font-size: 12px;
+    }
+    .title {
+      font-size: 22px;
+    }
+    .content {
+      font-size: 18px;
+    }
+  }
+  .actions,
+  .comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: $primary-light;
+    padding: 1rem;
+    margin-top: 30px;
+    input[type="text"],
+    textarea {
+      &:enabled {
+        border-bottom: 2px solid $primary-blue;
+        background-color: $primary-light;
+        padding-bottom: 0.3em;
+      }
+      &:hover {
+        border-bottom: 2px solid $secondary-blue;
+      }
+      &:valid {
+        border-bottom: 2px solid green;
+      }
+    }
+    .delete {
+      border-radius: 10px;
+      background-color: red;
+      padding: 0.4rem 0.6rem;
+      color: $primary-light;
+      &:hover {
+        background-color: darkred;
+      }
+    }
+    .submit {
+      border-radius: 10px;
+      border: 2px solid $primary-dark;
+      padding: 0.4rem 0.6rem;
+      color: $primary-dark;
+      &:hover {
+        background-color: $primary-dark;
+        color: $primary-light;
+      }
+    }
+  }
+}
+
 .home {
   display: flex;
   justify-content: center;

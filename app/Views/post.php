@@ -8,40 +8,46 @@ $nameUser = $_SESSION["User"]["username"];
 /** @var App\Entity\Post $post */
 foreach ($users as $user) {
     if ($post->getUserId() === $user->getUserId()) {
-        echo "Je suis le créateur " . $postUser = $user->getUsername();
+        $postUser = $user->getUsername();
     }
 }
 ?>
-<h3>Créateur : <?= $postUser ?></h3>
-<p> Créez : <?= $post->getCreationDate() ?></p>
-<h4>Titre : <?= $post->getTitle() ?></h4>
-<p>Contenu : <?= $post->getContent() ?></p>
-<p>Id du poste : <?= $post->getPostId() ?></p>
-<?php if (($_SESSION["User"]["userId"] === $post->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
-    <form action="/home/delete" method="POST"><button>Delete</button>
-        <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
-        <input type="hidden" name="postUser" value="<?= $post->getUserId() ?>">
-    </form>
-    <form method="POST"><button>Modify</button>
-        <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
-        <label for="title">Titre : </label>
-        <input type="text" name="title" value="<?= $post->getTitle() ?>" required>
-        <label for="content">Contenu : </label>
-        <input type="text" name="content" value="<?= $post->getContent() ?>" required>
-    </form>
-
-    <hr>
-<?php endif ?>
-<form action="comment" method="POST">
-    <input type="hidden" name="userId" value="<?= $idUser ?>">
-    <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
-    <label for="username">Username</label>
-    <input type="text" name="username" value="<?= $nameUser ?>" disabled>
-    <label for="comment">Commentaire</label>
-    <input type="text" name="comment" required>
-    <button>envoyer</button>
-</form>
-<hr>
+<div class="post-single">
+    <div class="post-single-item">
+        <img src="/src/assets/images/<?= $post->getImage() ?>" alt="">
+        <p class="created"> Crée le : <?= $post->getCreationDate() ?> | Par : <?= $postUser ?></p>
+        <h3>Titre : <?= $post->getTitle() ?></h3>
+        <p>Contenu : <?= $post->getContent() ?></p>
+    </div>
+    <div class="actions">
+        <?php if (($_SESSION["User"]["userId"] === $post->getUserId()) || $_SESSION["User"]["admin"] === 1) : ?>
+            <form method="POST">
+                <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
+                <label for="title">Titre : </label>
+                <input type="text" name="title" value="<?= $post->getTitle() ?>" required>
+                <label for="content">Contenu : </label>
+                <input type="text" name="content" value="<?= $post->getContent() ?>" required>
+                <input class="modify" type="submit" value="Modify"></input>
+            </form>
+            <form action="/home/delete" method="POST">
+                <input class="delete" type="submit" value="Delete"></input>
+                <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
+                <input type="hidden" name="postUser" value="<?= $post->getUserId() ?>">
+            </form>
+        <?php endif ?>
+    </div>
+    <div class="comment">
+        <form action="comment" method="POST">
+            <input type="hidden" name="userId" value="<?= $idUser ?>">
+            <input type="hidden" name="postId" value="<?= $post->getPostId() ?>">
+            <label for="username">Username</label>
+            <input type="text" name="username" value="<?= $nameUser ?>" disabled>
+            <label for="comment">Commentaire</label>
+            <input type="text" name="comment" required>
+            <input class="submit" type="submit" value="Envoyer">
+        </form>
+    </div>
+</div>
 <?php
 /** @var App\Entity\Comment[] $comments */
 /** @var App\Entity\Child[] $childComments */

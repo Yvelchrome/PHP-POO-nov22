@@ -191,6 +191,84 @@ textarea:focus {
   color: hsl(217deg, 61%, 27%);
 }
 
+.post-single {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+  flex-direction: column;
+}
+.post-single-item {
+  background-color: hsl(0deg, 0%, 95%);
+  padding: 20px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.post-single-item .created {
+  color: hsl(0deg, 0%, 50%);
+  font-size: 12px;
+}
+.post-single-item .title {
+  font-size: 22px;
+}
+.post-single-item .content {
+  font-size: 18px;
+}
+.post-single .actions,
+.post-single .comment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background-color: hsl(0deg, 0%, 95%);
+  padding: 1rem;
+  margin-top: 30px;
+}
+.post-single .actions input[type=text]:enabled,
+.post-single .actions textarea:enabled,
+.post-single .comment input[type=text]:enabled,
+.post-single .comment textarea:enabled {
+  border-bottom: 2px solid hsl(197deg, 68%, 34%);
+  background-color: hsl(0deg, 0%, 95%);
+  padding-bottom: 0.3em;
+}
+.post-single .actions input[type=text]:hover,
+.post-single .actions textarea:hover,
+.post-single .comment input[type=text]:hover,
+.post-single .comment textarea:hover {
+  border-bottom: 2px solid hsl(217deg, 61%, 27%);
+}
+.post-single .actions input[type=text]:valid,
+.post-single .actions textarea:valid,
+.post-single .comment input[type=text]:valid,
+.post-single .comment textarea:valid {
+  border-bottom: 2px solid green;
+}
+.post-single .actions .delete,
+.post-single .comment .delete {
+  border-radius: 10px;
+  background-color: red;
+  padding: 0.4rem 0.6rem;
+  color: hsl(0deg, 0%, 95%);
+}
+.post-single .actions .delete:hover,
+.post-single .comment .delete:hover {
+  background-color: darkred;
+}
+.post-single .actions .submit,
+.post-single .comment .submit {
+  border-radius: 10px;
+  border: 2px solid hsl(0deg, 0%, 5%);
+  padding: 0.4rem 0.6rem;
+  color: hsl(0deg, 0%, 5%);
+}
+.post-single .actions .submit:hover,
+.post-single .comment .submit:hover {
+  background-color: hsl(0deg, 0%, 5%);
+  color: hsl(0deg, 0%, 95%);
+}
+
 .home {
   display: flex;
   justify-content: center;
